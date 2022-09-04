@@ -10,8 +10,15 @@ app.use(express.json());
 // PORT
 const PORT = process.env.PORT || 5050;
 
-// Connect mongoDB
+// import routes
+const TodoItemRoute = require('./routes/todoItems');
 
+// Connect mongoDB
+mongoose.connect(process.env.DB_CONNECT)
+.then(() => console.log("Database connected"))
+.catch(err => console.log(err))
+
+app.use('/', TodoItemRoute);
 
 // Add port
 app.listen(PORT, () => console.log("Server connected"));
