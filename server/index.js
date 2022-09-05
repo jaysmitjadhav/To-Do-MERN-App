@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
 
@@ -8,7 +9,10 @@ const app = express();
 app.use(express.json());
 
 // PORT
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 5500;
+
+// use cors
+app.use(cors());
 
 // import routes
 const TodoItemRoute = require('./routes/todoItems');
